@@ -2,6 +2,8 @@ import React, { useState } from 'react'
 
 import PasswordValidator from './utils/PasswordValidator'
 
+import PasswordValidatorStatusViewer from './PasswordValidatorStatusViewer'
+
 import './App.scss'
 
 import openEye from './eye.svg'
@@ -29,13 +31,7 @@ function App() {
         <img src={passwordIsVisible ? closedEye : openEye} alt={passwordIsVisible ? 'Closed Eye' : 'open Eye'} width="32" />
       </span>
 
-      <ul>
-        <li style={{ color: passwordValidator.hasLowerCaseLetter() ? 'green' : 'red' }}>One lowercase letter</li>
-        <li style={{ color: passwordValidator.hasUpperCaseLetter() ? 'green' : 'red' }}>One uppercase letter</li>
-        <li style={{ color: passwordValidator.hasSpecialCharacter() ? 'green' : 'red' }}>One special character</li>
-        <li style={{ color: passwordValidator.hasDigit() ? 'green' : 'red' }}>One number</li>
-        <li style={{ color: passwordValidator.hasValidLength() ? 'green' : 'red' }}>Minimum 8 characters</li>
-      </ul>
+      <PasswordValidatorStatusViewer validator={passwordValidator} />
     </>
   )
 }
